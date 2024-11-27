@@ -215,7 +215,7 @@ class NexiaThermostatZoneSensor(NexiaThermostatZoneEntity, SensorEntity):
         super().__init__(
             coordinator,
             zone,
-            unique_id=f"{zone.zone_id}_{sensor_call}",
+            unique_id=f"{zone.thermostat_id}_{zone.zone_id}_{sensor_call}",
         )
         self._call = sensor_call
         self._modifier = modifier

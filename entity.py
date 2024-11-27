@@ -104,11 +104,11 @@ class NexiaThermostatZoneEntity(NexiaThermostatEntity):
         """Initialize the entity."""
         super().__init__(coordinator, zone.thermostat, unique_id)
         self._zone = zone
-        zone_name = self._zone.get_name()
+        zone_name = self._zone.get_longname()
         if TYPE_CHECKING:
             assert self._attr_device_info is not None
         self._attr_device_info |= {
-            ATTR_IDENTIFIERS: {(DOMAIN, zone.zone_id)},
+            ATTR_IDENTIFIERS: {(DOMAIN, zone.thermostat_id + "_" + zone.zone_id)},
             ATTR_NAME: zone_name,
             ATTR_SUGGESTED_AREA: zone_name,
             ATTR_VIA_DEVICE: (DOMAIN, zone.thermostat.thermostat_id),
