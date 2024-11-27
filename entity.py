@@ -108,12 +108,12 @@ class NexiaThermostatZoneEntity(NexiaThermostatEntity):
         if TYPE_CHECKING:
             assert self._attr_device_info is not None
         self._attr_device_info |= {
-            ATTR_IDENTIFIERS: {(DOMAIN, zone.thermostat_id + "_" + zone.zone_id)},
+            ATTR_IDENTIFIERS: {(DOMAIN, zone.thermostat_id+"_"+str(zone.zone_id))},
             ATTR_NAME: zone_name,
             ATTR_SUGGESTED_AREA: zone_name,
             ATTR_VIA_DEVICE: (DOMAIN, zone.thermostat.thermostat_id),
         }
-        self._zone_signal = f"{SIGNAL_ZONE_UPDATE}-{zone.zone_id}"
+        self._zone_signal = f"{SIGNAL_ZONE_UPDATE}-{zone.thermostat_id}-{zone.zone_id}"
 
     async def async_added_to_hass(self) -> None:
         """Listen for signals for services."""
