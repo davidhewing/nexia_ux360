@@ -540,7 +540,7 @@ class NexiaThermostatZone:
         if self.thermostat.get_model() == "TSYS2C60A2VVUEA":   
             print( f'UX360 End Point      : {end_point}' )
             if end_point == "run_mode":   
-                url,method = self._get_ux360_url("thermostat_fan_mode","update_thermostat_run_mode")
+                url,method = self._get_ux360_url("thermostat_run_mode","update_thermostat_run_mode")
             
             if end_point == "setpoints":
                 url,method = self._get_ux360_url("thermostat","set_setpoints")
