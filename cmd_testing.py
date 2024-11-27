@@ -56,8 +56,9 @@ def displaystatus(nexia_home):
             zone = thermostat.get_zone_by_id(_zone_id)
             _zone_name = zone.get_name()
             _zone_status = zone.get_status()
+            _zone_longname = zone.get_longname()
 
-            print(f'    {_zone_id} - "{_zone_name}" ({_zone_status})')
+            print(f'    {_zone_longname} : {_zone_id} - "{_zone_name}" ({_zone_status})')
 
 
 async def _runner(username, password, brand):
@@ -73,8 +74,8 @@ async def _runner(username, password, brand):
         """ Various tests """
         # await nexia_home.thermostats[0].zones[0].set_heat_cool_temp(cool_temperature=76.0)
         # await nexia_home.thermostats[0].set_fan_mode("on")
-        zone = nexia_home.thermostats[0].get_zone_by_id(1)
-        await zone.set_mode("HEAT")
+        #zone = nexia_home.thermostats[0].get_zone_by_id(1)
+        #await zone.set_mode("HEAT")
 
         time.sleep(5)
 
