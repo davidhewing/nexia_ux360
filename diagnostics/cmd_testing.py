@@ -81,6 +81,8 @@ async def _runner(username, password, brand):
 
         displaystatus(nexia_home)
 
+        print(nexia_home.devices_json)
+
     finally:
         await session.close()
     return nexia_home
