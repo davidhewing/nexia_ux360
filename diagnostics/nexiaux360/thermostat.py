@@ -682,7 +682,7 @@ class NexiaThermostat:
         )
 
         """ Support for UX360 Thermostat """
-        if self.get_model() == "TSYS2C60A2VVUEA":
+        if self.get_model().startswith('TSYS2C60A2VVU'):
             print(f"UX360 End Point      : {end_point}")
             if end_point == "fan_mode":  # update_thermostat_fan_mode
                 url = self._get_thermostat_deep_key(

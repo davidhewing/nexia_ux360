@@ -1,0 +1,16 @@
+Programs designed to run from the commandline within Home Assistant.
+
+It may be necessary to run the following two commands to get additional python libraries:
+
+pip3 install aiohttp
+pip3 install orjson       
+chmod 700 dump_json.py cmd_testing.py
+
+To dump the server data in JSON format, use the dump_json.py command:
+
+python3 ./dump_json.py --username USERNAME --password PASSWORD --brand BRAND
+BRAND can particular nexia brand name, e.g. trane
+
+The cmd_testing.py script is designed to exercise the library and give a parsed status
+python3 ./cmd_testing.py --username USERNAME --password PASSWORD --brand BRAND
+BRAND can particular nexia brand name, e.g. trane
