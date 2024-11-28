@@ -43,7 +43,7 @@ class NexiaThermostatZone:
         _url = self._nexia_home.mobile_url + "/xxl_zones/{zone_id}/{end_point}"
 
         # Support for UX360 Thermostat
-        if self.thermostat.get_model() == "TSYS2C60A2VVUEA":   
+        if self.thermostat.get_model().startswith('TSYS2C60A2VVU'):
             end_point = "{end_point}"
 
         return _url
@@ -550,7 +550,7 @@ class NexiaThermostatZone:
         method = "POST"
 
         """ Detection of the UX360 Trane Themostat Model """
-        if self.thermostat.get_model() == "TSYS2C60A2VVUEA":   
+        if self.thermostat.get_model().startswith('TSYS2C60A2VVU'):
             print( f'UX360 End Point      : {end_point}' )
             if end_point == "run_mode":   
                 url,method = self._get_ux360_url("thermostat_run_mode","update_thermostat_run_mode")
