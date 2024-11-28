@@ -1,7 +1,2 @@
-nexiaux360/__pycache__/__init__.cpython-313.pyc
-nexiaux360/__pycache__/automation.cpython-313.pyc
-nexiaux360/__pycache__/const.cpython-313.pyc
-nexiaux360/__pycache__/home.cpython-313.pyc
-nexiaux360/__pycache__/thermostat.cpython-313.pyc
-nexiaux360/__pycache__/util.cpython-313.pyc
-nexiaux360/__pycache__/zone.cpython-313.pyc
+trane_cofnig_davidhewing.conf
+nexiaux360/__pycache__/
