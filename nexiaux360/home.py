@@ -52,7 +52,7 @@ class NexiaHome:
     def __init__(
         self,
         session: aiohttp.ClientSession,
-        house_id=None,
+        house_id: str = None,
         username=None,
         password=None,
         device_name=DEFAULT_DEVICE_NAME,
@@ -63,7 +63,7 @@ class NexiaHome:
         Connects to and provides the ability to get and set parameters of your
         Nexia connected thermostat.
 
-        :param house_id: int - Your house_id. You can get this from logging in
+        :param house_id: str - Your house_id. You can get this from logging in
         and looking at the url once you're looking at your climate device.
         https://www.mynexia.com/houses/<house_id>/climate
         :param username: str - Your login email address
@@ -473,14 +473,14 @@ class NexiaHome:
             return datetime.datetime.isoformat(datetime.datetime.min)
         return datetime.datetime.isoformat(self.last_update)
 
-    def get_thermostat_by_id(self, thermostat_id: int) -> NexiaThermostat:
+    def get_thermostat_by_id(self, thermostat_id: str) -> NexiaThermostat:
         """Get a thermostat by its nexia id."""
         for thermostat in self.thermostats:
             if thermostat.thermostat_id == thermostat_id:
                 return thermostat
         raise KeyError
 
-    def get_thermostat_ids(self) -> list[int]:
+    def get_thermostat_ids(self) -> list[str]:
         """
         Returns the number of thermostats available to Nexia
         :return:

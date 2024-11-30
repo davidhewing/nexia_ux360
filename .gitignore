@@ -1,2 +1,5 @@
 trane_cofnig_davidhewing.conf
-nexiaux360/__pycache__/
+nexiaux360/__pycache__
+__pycache__
+.tmp
+diagnostics/trane_config_davidhewing.conf

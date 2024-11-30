@@ -26,7 +26,7 @@ class NexiaThermostat:
     def __init__(self, nexia_home, thermostat_json):
         """Init nexia Thermostat."""
         self._nexia_home: NexiaHome = nexia_home
-        self.thermostat_id: int = thermostat_json["id"]
+        self.thermostat_id: str = thermostat_json["id"]
         self._thermostat_json: dict[str, Any] = thermostat_json
         self.zones: list[NexiaThermostatZone] = []
         if self.has_zones():
@@ -564,14 +564,14 @@ class NexiaThermostat:
         # create a new list of IDs.
         zone_list = []
         for zone in self.zones:
-            zone_list.append(zone.zone_id)
+            zone_list.append(zone.zone_haid)
 
         return zone_list
 
-    def get_zone_by_id(self, zone_id):
+    def get_zone_by_id(self, zone_haid):
         """Get a zone by its nexia id."""
         for zone in self.zones:
-            if zone.zone_id == zone_id:
+            if zone.zone_haid == zone_haid:
                 return zone
         raise KeyError
 

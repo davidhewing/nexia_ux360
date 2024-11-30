@@ -20,6 +20,17 @@ def displaystatus(nexia_home):
         thermostat = nexia_home.get_thermostat_by_id(_thermostat_id)
         _thermostat_name = thermostat.get_name()
         _thermostat_model = thermostat.get_model()
+        
+        print(
+            f'{_thermostat_id} - "{_thermostat_name}" ({_thermostat_model})'
+        )
+
+    print("")
+    print("-------------------------------")
+    for _thermostat_id in nexia_home.get_thermostat_ids():
+        thermostat = nexia_home.get_thermostat_by_id(_thermostat_id)
+        _thermostat_name = thermostat.get_name()
+        _thermostat_model = thermostat.get_model()
         _thermostat_compressor_speed = thermostat.get_current_compressor_speed()
         
         print(
@@ -73,7 +84,7 @@ async def _runner(username, password, brand):
 
         """ Various tests """
         # await nexia_home.thermostats[0].zones[0].set_heat_cool_temp(cool_temperature=76.0)
-        # await nexia_home.thermostats[0].set_fan_mode("on")
+        #await nexia_home.thermostats[0].set_fan_mode("on")
         #zone = nexia_home.thermostats[0].get_zone_by_id(1)
         #await zone.set_mode("HEAT")
 
