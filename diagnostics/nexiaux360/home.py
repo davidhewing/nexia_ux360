@@ -78,7 +78,7 @@ class NexiaHome:
 
         self.username = username
         self.password = password
-        self.house_id = house_id
+        self.house_id: str = house_id
         self.mobile_id = None
         self.brand = brand
         self.login_attempts_left = MAX_LOGIN_ATTEMPTS

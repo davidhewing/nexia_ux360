@@ -35,7 +35,7 @@ class NexiaThermostatZone:
         self._zone_json: dict[str, Any] = zone_json
         self.thermostat: NexiaThermostat = nexia_thermostat
         self.thermostat_id : str = nexia_thermostat.thermostat_id
-        self.zone_id: int = zone_json["id"]
+        self.zone_id: str = zone_json["id"]
         self.zone_haid: str = nexia_thermostat.thermostat_id+"_"+str(self.zone_id)
         self.zone_longname: str = nexia_thermostat.get_name() + "_" + self.get_name()
 
