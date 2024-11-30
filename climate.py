@@ -48,6 +48,8 @@ from .entity import NexiaThermostatZoneEntity
 from .types import NexiaConfigEntry
 from .util import percent_conv
 
+import logging
+
 PARALLEL_UPDATES = 1  # keep data in sync with only one connection at a time
 
 SERVICE_SET_AIRCLEANER_MODE = "set_aircleaner_mode"
@@ -159,7 +161,7 @@ class NexiaZone(NexiaThermostatZoneEntity, ClimateEntity):
         self, coordinator: NexiaDataUpdateCoordinator, zone: NexiaThermostatZone
     ) -> None:
         """Initialize the thermostat."""
-        super().__init__(coordinator, zone, zone.zone_id)
+        super().__init__(coordinator, zone, zone.zone_haid)
         thermostat = self._thermostat
         unit = thermostat.get_unit()
         min_humidity, max_humidity = thermostat.get_humidity_setpoint_limits()
