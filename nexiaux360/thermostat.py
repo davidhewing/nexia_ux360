@@ -26,7 +26,7 @@ class NexiaThermostat:
     def __init__(self, nexia_home, thermostat_json):
         """Init nexia Thermostat."""
         self._nexia_home: NexiaHome = nexia_home
-        self.thermostat_id: int = thermostat_json["id"]
+        self.thermostat_id: str = thermostat_json["id"]
         self._thermostat_json: dict[str, Any] = thermostat_json
         self.zones: list[NexiaThermostatZone] = []
         if self.has_zones():
