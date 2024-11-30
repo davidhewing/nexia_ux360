@@ -63,7 +63,7 @@ class NexiaHome:
         Connects to and provides the ability to get and set parameters of your
         Nexia connected thermostat.
 
-        :param house_id: int - Your house_id. You can get this from logging in
+        :param house_id: str - Your house_id. You can get this from logging in
         and looking at the url once you're looking at your climate device.
         https://www.mynexia.com/houses/<house_id>/climate
         :param username: str - Your login email address
