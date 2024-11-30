@@ -52,7 +52,7 @@ class NexiaHome:
     def __init__(
         self,
         session: aiohttp.ClientSession,
-        house_id=None,
+        house_id: str = None,
         username=None,
         password=None,
         device_name=DEFAULT_DEVICE_NAME,
@@ -78,7 +78,7 @@ class NexiaHome:
 
         self.username = username
         self.password = password
-        self.house_id: str = house_id
+        self.house_id = house_id
         self.mobile_id = None
         self.brand = brand
         self.login_attempts_left = MAX_LOGIN_ATTEMPTS
@@ -473,14 +473,14 @@ class NexiaHome:
             return datetime.datetime.isoformat(datetime.datetime.min)
         return datetime.datetime.isoformat(self.last_update)
 
-    def get_thermostat_by_id(self, thermostat_id: int) -> NexiaThermostat:
+    def get_thermostat_by_id(self, thermostat_id: str) -> NexiaThermostat:
         """Get a thermostat by its nexia id."""
         for thermostat in self.thermostats:
             if thermostat.thermostat_id == thermostat_id:
                 return thermostat
         raise KeyError
 
-    def get_thermostat_ids(self) -> list[int]:
+    def get_thermostat_ids(self) -> list[str]:
         """
         Returns the number of thermostats available to Nexia
         :return:

@@ -20,6 +20,17 @@ def displaystatus(nexia_home):
         thermostat = nexia_home.get_thermostat_by_id(_thermostat_id)
         _thermostat_name = thermostat.get_name()
         _thermostat_model = thermostat.get_model()
+        
+        print(
+            f'{_thermostat_id} - "{_thermostat_name}" ({_thermostat_model})'
+        )
+
+    print("")
+    print("-------------------------------")
+    for _thermostat_id in nexia_home.get_thermostat_ids():
+        thermostat = nexia_home.get_thermostat_by_id(_thermostat_id)
+        _thermostat_name = thermostat.get_name()
+        _thermostat_model = thermostat.get_model()
         _thermostat_compressor_speed = thermostat.get_current_compressor_speed()
         
         print(
