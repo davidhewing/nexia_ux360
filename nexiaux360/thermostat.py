@@ -564,14 +564,14 @@ class NexiaThermostat:
         # create a new list of IDs.
         zone_list = []
         for zone in self.zones:
-            zone_list.append(zone.zone_id)
+            zone_list.append(zone.zone_haid)
 
         return zone_list
 
-    def get_zone_by_id(self, zone_id):
+    def get_zone_by_id(self, zone_haid):
         """Get a zone by its nexia id."""
         for zone in self.zones:
-            if zone.zone_id == zone_id:
+            if zone.zone_haid == zone_haid:
                 return zone
         raise KeyError
 
