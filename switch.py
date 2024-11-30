@@ -44,7 +44,7 @@ class NexiaHoldSwitch(NexiaThermostatZoneEntity, SwitchEntity):
         self, coordinator: NexiaDataUpdateCoordinator, zone: NexiaThermostatZone
     ) -> None:
         """Initialize the hold mode switch."""
-        zone_id = zone.zone_id
+        zone_id = zone.zone_haid
         super().__init__(coordinator, zone, zone_id)
 
     @property
