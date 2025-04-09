@@ -1,4 +1,5 @@
 """Nexia Automation."""
+
 from __future__ import annotations
 
 import logging
@@ -17,11 +18,11 @@ class NexiaAutomation:
     Represents a nexia automation.
     """
 
-    def __init__(self, nexia_home, automation_json):
+    def __init__(self, nexia_home: NexiaHome, automation_json: dict[str, Any]) -> None:
         """Init nexia Thermostat."""
-        self._nexia_home: NexiaHome = nexia_home
+        self._nexia_home = nexia_home
         self.automation_id: int = automation_json["id"]
-        self._automation_json: dict[str, Any] = automation_json
+        self._automation_json = automation_json
 
     @property
     def API_MOBILE_AUTOMATION_URL(self) -> str:  # pylint: disable=invalid-name
@@ -29,37 +30,29 @@ class NexiaAutomation:
 
     @property
     def name(self) -> str:
-        """
-        Name of the automation.
-        """
+        """Name of the automation."""
         return self._get_automation_key("name")
 
     @property
     def description(self) -> str:
-        """
-        Description of the automation.
-        """
+        """Description of the automation."""
         return self._get_automation_key("description")
 
     @property
     def enabled(self) -> bool:
-        """
-        Enabled stat of the automation.
-        """
+        """Enabled stat of the automation."""
         return self._get_automation_key("enabled")
 
     async def activate(self) -> None:
-        """
-        run the automation.
-        """
-        await self._post_automation_json("activate", "")
+        """Run the automation."""
+        async with await self._post_automation_json("activate", ""):
+            pass
 
     def _get_automation_key(self, key: str) -> Any:
-        """
-        Returns the automation value from the provided key in the automation's
+        """Returns the automation value from the provided key in the automation's
         JSON.
         :param key: str
-        :return: value
+        :return: value.
         """
         automation = self._automation_json
         if key in automation:
@@ -68,12 +61,13 @@ class NexiaAutomation:
 
     async def _post_automation_json(self, end_point, payload):
         url = self.API_MOBILE_AUTOMATION_URL.format(
-            end_point=end_point, automation_id=self._automation_json["id"]
+            end_point=end_point,
+            automation_id=self._automation_json["id"],
         )
         return await self._nexia_home.post_url(url, payload)
 
     def update_automation_json(self, automation_json: dict[str, Any]) -> None:
-        """Update with new json from the api"""
+        """Update with new json from the api."""
         if self._automation_json is None:
             return
 
